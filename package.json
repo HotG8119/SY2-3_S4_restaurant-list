@@ -1,0 +1,31 @@
+{
+  "name": "sy2-3_s2_a1-restaurant-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node models/seeds/restaurantSeeder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HotG8119/SY2-3_S2_A1-restaurant-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HotG8119/SY2-3_S2_A1-restaurant-list/issues"
+  },
+  "homepage": "https://github.com/HotG8119/SY2-3_S2_A1-restaurant-list#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^4.0.2",
+    "mongoose": "^5.13.17",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
