@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
 
+const routes = require("./routes");
 // setting mongoose
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -32,37 +33,14 @@ app.set("view engine", "hbs");
 // setting static files
 app.use(express.static("public"), express.urlencoded({ extended: true }));
 
-// setting the route and corresponding response
-app.get("/", (req, res) => {
-  Restaurant.find()
-    .lean()
-    .then(restaurants => res.render("index", { restaurants }))
-    .catch(error => console.log(error));
-});
-
-app.get("/search", (req, res) => {
-  const keyword = req.query.keyword.trim().toLowerCase();
-
-  Restaurant.find()
-    .lean()
-    .then(restaurants => {
-      const filterRestaurant = restaurants.filter(restaurant => {
-        return (
-          restaurant.name.toLowerCase().includes(keyword) ||
-          restaurant.category.includes(keyword)
-        );
-      });
-      res.render("index", { restaurants: filterRestaurant, keyword });
-    })
-    .catch(error => console.log(error));
-});
+app.use(routes);
 
 //add new restaurant
-app.get("/add", (req, res) => {
+app.get("/restaurants/add", (req, res) => {
   return res.render("addRestaurant");
 });
 
-app.post("/add", (req, res) => {
+app.post("/restaurants/add", (req, res) => {
   const restaurant = req.body;
   return Restaurant.create(restaurant)
     .then(() => res.redirect("/"))
