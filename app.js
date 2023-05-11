@@ -35,59 +35,6 @@ app.use(express.static("public"), express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-//add new restaurant
-app.get("/restaurants/add", (req, res) => {
-  return res.render("addRestaurant");
-});
-
-app.post("/restaurants/add", (req, res) => {
-  const restaurant = req.body;
-  return Restaurant.create(restaurant)
-    .then(() => res.redirect("/"))
-    .catch(error => console.log(error));
-});
-
-//update restaurant
-app.get("/restaurants/:restaurantId/edit", (req, res) => {
-  const restaurantId = req.params.restaurantId;
-  return Restaurant.findById(restaurantId)
-    .lean()
-    .then(restaurant => res.render("edit", { restaurant }))
-    .catch(error => console.log(error));
-});
-
-app.post("/restaurants/:restaurantId/edit", (req, res) => {
-  const restaurantId = req.params.restaurantId;
-  const restaurantNew = req.body;
-  return Restaurant.findByIdAndUpdate(restaurantId, restaurantNew)
-    .then(() => res.redirect(`/restaurants/${restaurantId}`))
-    .catch(error => console.log(error));
-});
-
-//show restaurant
-app.get("/restaurants/:restaurantId", (req, res) => {
-  const restaurantId = req.params.restaurantId;
-  Restaurant.find()
-    .lean()
-    .then(restaurants => {
-      const restaurant = restaurants.find(
-        restaurant => restaurant._id.toString() === restaurantId
-      );
-
-      res.render("show", { restaurant });
-    })
-    .catch(error => console.log(error));
-});
-
-//delete restaurant
-app.post("/restaurants/:id/delete", (req, res) => {
-  const id = req.params.id;
-  return Restaurant.findById(id)
-    .then(restaurant => restaurant.remove())
-    .then(() => res.redirect("/"))
-    .catch(error => console.log(error));
-});
-
 // Listen the server when it started
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`);
