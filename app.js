@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
 
+const methodOverride = require("method-override");
 const routes = require("./routes");
 // setting mongoose
 if (process.env.NODE_ENV !== "production") {
@@ -32,7 +33,7 @@ app.set("view engine", "hbs");
 
 // setting static files
 app.use(express.static("public"), express.urlencoded({ extended: true }));
-
+app.use(methodOverride("_method"));
 app.use(routes);
 
 // Listen the server when it started

@@ -6,7 +6,7 @@
 
 </div>
 <div class="mx-5">
-    <form action="/restaurants/{{restaurant._id}}/edit" method="post">
+    <form action="/restaurants/{{restaurant._id}}/edit?_method=PUT" method="post">
         <div class="form-floating mb-1">
             <input type="text" class="form-control" id="nameInput" name="name" placeholder="餐廳名稱"
                 value="{{restaurant.name}}" required>

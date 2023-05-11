@@ -98,7 +98,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-footer">
-              <form action="/restaurants/{{this._id}}/delete" method="post">
+              <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="post">
                 <button type="submit" class="btn btn-danger">Delete</button>
               </form>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
