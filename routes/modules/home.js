@@ -10,6 +10,15 @@ router.get("/", (req, res) => {
     .catch(error => console.log(error));
 });
 
+router.get("/sort/:sortBy", (req, res) => {
+  const sortBy = req.params.sortBy;
+  Restaurant.find()
+    .lean()
+    .sort({ [sortBy]: "asc" })
+    .then(restaurants => res.render("index", { restaurants }))
+    .catch(error => console.log(error));
+});
+
 router.get("/search", (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase();
 

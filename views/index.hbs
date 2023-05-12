@@ -1,3 +1,6 @@
+{{! reset style.css }}
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -11,27 +14,21 @@
             <button class="btn btn-major" style="height: 38px;" type="submit" id="search-button"><i
                 class="fas fa-search"></i></button>
           </div>
-          {{!-- 排序選單 --}}
-          <div class="dropdown d-flex flex-row-reverse">
-
-            <select name="sort" id="sort">
-              <option value="">排序方式</option>
-              <optgroup label="新增時間">
-                <option value="time-new">New</option>
-                <option value="time-old">Old</option>
-              </optgroup>
-              <optgroup label="餐廳名稱">
-                <option value="name-a">A~Z</option>
-                <option value="name-z">Z~A</option>
-              </optgroup>
-              <optgroup label="餐廳評分">
-                <option value="rating-high">High</option>
-                <option value="rating-low">Low</option>
-              </optgroup>
-            </select>
-          </div>
         </div>
       </form>
+      {{!-- sort select --}}
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          排序方式
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/sort/name">字母排序</a></li>
+          <li><a class="dropdown-item" href="/sort/category">類別</a></li>
+          <li><a class="dropdown-item" href="/sort/location">地區</a></li>
+          <li><a class="dropdown-item" href="/sort/rating">評分</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -51,9 +48,6 @@
 
 <div class="row">
   <div class="col-md-10 col-12 mx-auto ">
-
-
-
     <div class="row row-cols-sm-3">
 
       {{! create restaurant card here }}
