@@ -18,6 +18,7 @@
 - 快速連結餐廳地址至 Google Map
 - 透過關鍵字搜尋餐廳名稱或類別
 - 關鍵字查無餐廳提示
+- 選擇名稱/地區/類別來排序餐廳
 
 ## 開始使用
 
@@ -71,6 +72,7 @@ ctrl + c
 - Bootstrap 5.3.0
 - dotenv 16.0.3
 - mongoose 5.13.17
+- method-override 3.0.0
 - Node.js 14.16.0
 - Nodemon 2.0.22
 - Express.js 4.18.2
