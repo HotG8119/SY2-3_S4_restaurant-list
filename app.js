@@ -6,26 +6,10 @@ const port = 3000;
 
 const methodOverride = require("method-override");
 const routes = require("./routes");
-// setting mongoose
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on("error", () => {
-  console.log("mongodb error!");
-});
-db.once("open", () => {
-  console.log("mongodb connected!");
-});
+require("./config/mongoose");
 
 // require express-handlebars here
 const exphbs = require("express-handlebars");
-const Restaurant = require("./models/restaurant");
 
 // setting template engine
 app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
